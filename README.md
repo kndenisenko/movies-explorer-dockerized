@@ -8,6 +8,7 @@
 - Основные команды вынесены в Makefile
 
 Требования:
+- Node JS v16
 - Docker и Docker Compose
 
 Запуск 
