@@ -1,0 +1,25 @@
+.page {
+  --bg-color: #202020;
+  --second-bg-color: #272727;
+  --hero-color: #073042;
+  --accent-color: #3ddc84;
+  --blue: #4285f4;
+  --red: #ee3465;
+  --form-header-color: #8b8b8b;
+
+  /* https://oklch.com/ */
+  /* когда-нибудь файрфокс проспится и можно будет юзать */
+  /* --bg-color: oklch(24.35% 0 0);
+  --second-bg-color: oklch(27.27% 0 0);
+  --hero-color: oklch(29.16% 0.054 232.4);
+  --accent-color: oklch(79.3% 0.18 154);
+  --blue: oklch(63.04% 0.18 259.96);
+  --red: #oklch(62.79% 0.22 11.76);
+  --form-header-color: #oklch(63.68% 0 0); */
+
+  max-width: 1280px;
+  background-color: var(--bg-color);
+  font-family: inter, Arial, Helvetica, sans-serif;
+  color: white;
+  margin: 0 auto;
+}

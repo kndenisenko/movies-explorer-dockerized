@@ -1,0 +1,239 @@
+.student {
+  padding: 110px 70px 125px 70px;
+  background-color: var(--bg-color);
+}
+
+.student__header {
+  font-size: 22px;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  border-bottom: 1px solid #dadada;
+  margin: 0 0 65px 0;
+  padding: 0 0 23px 0;
+}
+
+.student__info {
+  display: grid;
+  grid-template-columns: 600fr 270fr;
+  grid-gap: 99px 250px;
+  grid-template-areas:
+    "info photo"
+    "whoops photo";
+  margin: 0 0 101px 0;
+}
+
+.student__info-container {
+  grid-area: info;
+}
+
+.student__info-name {
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  margin: 0 0 18px 0;
+}
+
+.student__info-status {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  margin: 0 0 26px 0;
+}
+
+.student__info-bio {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.student__info-whoops {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: all, 0.3s;
+  grid-area: whoops;
+}
+
+.student__info-whoops:hover {
+  opacity: 0.7;
+}
+
+.student__info-photo {
+  border-radius: 10px;
+  grid-area: photo;
+}
+
+.student__portfolio {
+}
+
+.student__portfolio-header {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #8b8b8b;
+  margin: 0 0 50px 0;
+}
+
+.student__portfolio-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.student__portfolio-list-item {
+  border-bottom: 1px solid #424242;
+  margin: 0 0 20px 0;
+  padding: 0 0 19px 0;
+  transition: all, 0.3s;
+}
+
+.student__portfolio-list-item:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+.student__portfolio-list-item:hover {
+  opacity: 0.7;
+}
+
+.student__portfolio-list-link {
+  display: block;
+  font-size: 30px;
+  line-height: 50px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: white;
+  text-decoration: none;
+  background-image: url(../../images/hoba.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position-x: right, 5px;
+  background-position-y: center;
+  transition: all, 0.3s;
+}
+
+.student__portfolio-list-link:hover {
+  opacity: 0.7;
+}
+
+@media (width <= 1133px) {
+  .student__info {
+    grid-template-columns: 365fr 250fr;
+    grid-gap: 87px 49px;
+  }
+}
+
+@media (width <= 1045px) {
+  .student {
+    padding: 90px 50px 90px 50px;
+  }
+
+  .student__header {
+    margin: 0 0 65px 0;
+    padding: 0 0 24px 0;
+  }
+
+  .student__info {
+    grid-template-columns: 358fr 250fr;
+    margin: 0 0 91px 0;
+  }
+
+  .student__info-photo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .student__info-name {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 16px 0;
+  }
+
+  .student__info-status {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 20px 0;
+  }
+
+  .student__info-bio {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .student__portfolio-list-link {
+    font-size: 28px;
+  }
+}
+
+@media (width <= 630px) {
+  .student {
+    padding: 63px 14px 90px 14px;
+  }
+
+  .student__header {
+    font-size: 18px;
+    margin: 0 0 60px 0;
+    padding: 0 0 30px 0;
+  }
+
+  .student__info {
+    grid-template-columns: 1fr;
+    grid-gap: 39px;
+    grid-template-areas:
+      "photo"
+      "info"
+      "whoops";
+    margin: 0 0 70px 0;
+  }
+  .student__info-name {
+    font-size: 30px;
+    line-height: auto;
+    margin: 0 0 17px 0;
+  }
+
+  .student__info-status {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .student__info-bio {
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .student__info-whoops {
+    font-size: 14px;
+  }
+
+  .student__portfolio-header {
+    font-size: 14px;
+    margin: 0 0 41px 0;
+  }
+
+  .student__portfolio-list-item {
+    border-bottom: 1px solid #424242;
+    margin: 0 0 20px 0;
+    padding: 0 0 19px 0;
+  }
+
+  .student__portfolio-list-item:last-child {
+    margin: 0;
+    padding: 0;
+  }
+
+  .student__portfolio-list-link {
+    font-size: 18px;
+    line-height: 28px;
+    background-size: 10px 10px;
+    letter-spacing: -0.04em;
+  }
+}

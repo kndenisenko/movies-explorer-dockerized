@@ -1,0 +1,40 @@
+.moremovies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 107px 0 81px 0;
+  margin: 0 auto;
+}
+
+.moremovies__button {
+  width: 320px;
+  height: 36px;
+  color: white;
+  background-color: #2f2f2f;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  margin: 0;
+}
+
+.moremovies__button:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .moremovies {
+    padding: 35px 0 100px 0;
+  }
+}
+
+@media (width <= 320px) {
+  .moremovies {
+    padding: 100px 0 100px 0;
+  }
+
+  .moremovies__button {
+    width: 240px;
+  }
+}

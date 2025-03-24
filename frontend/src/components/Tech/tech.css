@@ -1,0 +1,141 @@
+.tech {
+  background-color: var(--second-bg-color);
+  padding: 102px 70px;
+}
+
+.tech__header {
+  font-size: 22px;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  border-bottom: 1px solid #dadada;
+  margin: 0;
+  padding: 0 0 23px 0;
+}
+
+.tech__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 90px 0 100px 0;
+}
+
+.tech__container-header {
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 0 0 28px 0;
+}
+
+.tech__container-text {
+  max-width: 460px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+
+.tech__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 90px);
+  gap: 8px;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech__list-item {
+  background-color: #303030;
+  border-radius: 10px;
+  margin-right: 10px;
+  transition: all, 0.3s;
+}
+
+.tech__list-item:last-child {
+  margin-right: 0;
+  cursor: pointer;
+}
+
+.tech__list-item:hover {
+  opacity: 0.7;
+}
+
+.tech__list-link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  padding: 21px 0 22px 0;
+}
+
+@media (width <= 768px) {
+  .tech {
+    padding: 90px 50px;
+  }
+
+  .tech__list {
+    gap: 0;
+  }
+
+  .tech__list-link {
+    font-size: 12px;
+  }
+
+  .tech__container {
+    margin: 80px 0 81px 0;
+  }
+
+  .tech__container-header {
+    margin: 0 0 21px 0;
+  }
+}
+
+@media (width <= 430px) {
+  .tech {
+    padding: 66px 18px;
+  }
+
+  .tech__header {
+    font-size: 18px;
+    margin: 0;
+    padding: 0 0 28px 0;
+  }
+
+  .tech__container-header {
+    font-size: 30px;
+  }
+
+  .tech__container-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+@media (width <= 320px) {
+  .tech__list {
+    grid-template-columns: repeat(2, 85px);
+  }
+  .tech__list-item {
+    margin-bottom: 10px;
+  }
+
+  .tech__list-item:last-child {
+    margin-right: 10px;
+  }
+
+  .tech__container {
+    margin: 49px 0 51px 0;
+  }
+
+  .tech__container-header {
+    margin: 0 0 13px 0;
+  }
+
+  .tech__container-text {
+    letter-spacing: -0.04em;
+  }
+}
