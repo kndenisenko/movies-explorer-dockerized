@@ -37,7 +37,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Подключаемся к БД moongoose
 mongoose.set('strictQuery', false); // убираем warning из консоли при старте
-mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE : constants.MONGO_BASE_DEV);
+
+// Отладочный вывод
+console.log('Переменные окружения:');
+console.log('MONGO_HOST:', process.env.MONGO_HOST);
+console.log('MONGO_PORT:', process.env.MONGO_PORT);
+console.log('MONGO_USERNAME:', process.env.MONGO_USERNAME);
+console.log('MONGO_PASSWORD:', process.env.MONGO_PASSWORD);
+console.log('MONGO_DATABASE:', process.env.MONGO_DATABASE);
+
+
 
 route(app);
 
@@ -45,7 +54,7 @@ route(app);
 app.use(errorLogger);
 
 // Обработка ошибок celebrate
-app.use(errors(app.err));
+app.use(errors());
 
 // // Ошибка 404 для несуществующих страниц
 // app.use((req, res, next) => {
@@ -57,6 +66,7 @@ error500(app);
 
 console.log('status', process.env.NODE_ENV);
 console.log('port', process.env.PORT);
+
 
 app.listen(process.env.NODE_ENV === 'production' ? process.env.PORT : 3004, () => {
 });
