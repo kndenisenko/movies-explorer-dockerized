@@ -13,7 +13,7 @@ const cors = require('./middlewares/cors');
 const rateLimit = require('./middlewares/rateLimit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-// const { NODE_ENV, PORT, MONGO_BASE } = process.env;
+// const { NODE_ENV, PORT, MONGO_BASE_CONNECTION } = process.env;
 
 // const { NotFoundError } = require('./errors/NotFoundError');
 const error500 = require('./middlewares/errorHandler');
@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Подключаемся к БД moongoose
 mongoose.set('strictQuery', false); // убираем warning из консоли при старте
-mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE : constants.MONGO_BASE_DEV);
+mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE_CONNECTION : constants.MONGO_BASE_CONNECTION_DEV);
 
 route(app);
 

@@ -23,3 +23,29 @@ site.local {
     header_up X-Forwarded-Proto {scheme}
   }
 }
+
+api.local {
+  log {
+    format json
+  }
+
+  # Компрессия
+  encode zstd gzip
+
+  # Самоподписной сертификат для внутреннего SSL
+  tls internal
+
+  # Проверка здоровья сервиса
+  @health {
+    path /health
+  }
+  respond @health 200
+
+  # Проксирование к frontend
+  reverse_proxy backend:3005 {
+    header_up Host {host}
+    header_up X-Real-IP {remote}
+    header_up X-Forwarded-For {remote}
+    header_up X-Forwarded-Proto {scheme}
+  }
+}

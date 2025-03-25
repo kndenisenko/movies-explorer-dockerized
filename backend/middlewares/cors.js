@@ -1,20 +1,21 @@
 // mw-cors
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const options = [
+  'http://localhost:8080',
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
   'http://localhost:3003',
   'http://localhost:3004',
   'http://localhost:3005',
-  'https://site.local/',
-  'http://site.local/',
-  'http://api.local/',
-  'https://api.local/',
-  'http://badass.nomoredomains.club',
-  'https://badass.nomoredomains.club',
-  'http://api.badass.nomoredomains.club',
-  'https://api.badass.nomoredomains.club',
+  'https://site.local',
+  'http://site.local',
+  'http://api.local',
+  'https://api.local',
+  // 'http://badass.nomoredomains.club',
+  // 'https://badass.nomoredomains.club',
+  // 'http://api.badass.nomoredomains.club',
+  // 'https://api.badass.nomoredomains.club',
   // 'https://YOUR.github.io',
 ];
 

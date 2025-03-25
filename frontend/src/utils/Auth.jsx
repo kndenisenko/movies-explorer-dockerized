@@ -1,8 +1,8 @@
 import { Urls } from "../utils/const.js";
 
+const BASE_URL = Urls.myapidev;
 // const BASE_URL = Urls.myapi;
-const BASE_URL = Urls.myapi;
-// const BASE_URL = "http://localhost:3001";
+// const BASE_URL = "http://localhost:3005";
 
 // регистрация
 export const registration = (name, email, password) => {

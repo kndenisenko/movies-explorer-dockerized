@@ -49,6 +49,16 @@ services:
     networks:
       - app-network
 
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    expose:
+      - 3005
+    command: node app.js
+    networks:
+      - app-network
+
 volumes:
   mongo-data:
   caddy_data:
