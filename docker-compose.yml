@@ -40,8 +40,9 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
+    # Disable access from localhost. Use Caddy instead
+    # ports:
+    #   - "8080:8080"
     expose:
       - 8080
     command: npm run start
