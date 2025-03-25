@@ -1,29 +1,15 @@
+# Dockerfile created by
+# https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+# Only for test purposes
+
+# This file don't install mongodb
+# Need to start mongodb separately
+# Cant connect to mongoDB after all
+
 FROM node:16
-
 WORKDIR /usr/src/app
-
-# Копируем только файлы зависимостей для кэширования слоя
 COPY package*.json ./
-
-# Устанавливаем только production зависимости
-# Используем npm install вместо npm ci для большей стабильности
-# Отключаем прогресс-бар и устанавливаем уровень логирования verbose
-RUN npm install --only=production --no-progress --loglevel=verbose
-
-# Второй этап сборки
-FROM node:16
-
-WORKDIR /usr/src/app
-
-# Копируем только установленные зависимости из первого этапа
-COPY --from=builder /usr/src/app/node_modules ./node_modules
+RUN npm ci
 COPY . .
-
-# Устанавливаем переменные окружения для Node.js
-ENV NODE_ENV=production
-
-# Открываем порт
 EXPOSE 3005
-
-# Запускаем приложение
 CMD ["node", "app.js"]
