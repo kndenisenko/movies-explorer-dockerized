@@ -1,9 +1,9 @@
 install:
-	echo "install edpendencied for front-end"
+	echo "install edpendencies for front-end"
 	cd frontend; \
 	npm install
 	echo "-----"
-	echo "install edpendencied for back-end"
+	echo "install edpendencies for back-end"
 	cd backend; \
 	npm install
 
