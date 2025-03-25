@@ -366,6 +366,8 @@ function App() {
     // localStorage.removeItem("shortfilms");
   };
 
+  console.log('BaseUrlCheck', Urls.myapidev);
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>

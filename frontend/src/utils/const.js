@@ -16,10 +16,12 @@ const Pathes = {
 const Urls = {
   // Отсюда берутся фильмы, не менять
   superSecretUrl: "https://api.nomoreparties.co/",
-  // Нужно для прода (SSL делает Caddy)
+
+  // Для прода, менять в Auth.js
   myapi: "https://api.probaland.ru",
-  // Нужно для разработки
-  myapidev: "http://api.local",
+
+  // Для разработки, менять в Auth.js
+  myapidev: "http://backend:3005",
 };
 
 export { Pathes, Urls };

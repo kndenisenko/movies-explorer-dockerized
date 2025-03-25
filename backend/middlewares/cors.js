@@ -16,6 +16,8 @@ const options = [
   'http://api.probaland.ru',
   'https://probaland.ru',
   'http://probaland.ru',
+  'https://site.probaland.ru',
+  'http://site.probaland.ru',
   // 'http://badass.nomoredomains.club',
   // 'https://badass.nomoredomains.club',
   // 'http://api.badass.nomoredomains.club',

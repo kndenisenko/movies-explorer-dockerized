@@ -24,28 +24,28 @@ site.probaland.ru {
   }
 }
 
-api.probaland.ru {
-  log {
-    format json
-  }
+# api.probaland.ru {
+#   log {
+#     format json
+#   }
 
-  # Компрессия
-  encode zstd gzip
+#   # Компрессия
+#   encode zstd gzip
 
-  # Самоподписной сертификат для внешних подключений
-  tls internal
+#   # Самоподписной сертификат для внешних подключений
+#   tls internal
 
-  # Проверка здоровья сервиса
-  @health {
-    path /health
-  }
-  respond @health 200
+#   # Проверка здоровья сервиса
+#   @health {
+#     path /health
+#   }
+#   respond @health 200
 
-  # Проксирование к backend
-  reverse_proxy backend:3005 {
-    header_up Host {host}
-    header_up X-Real-IP {remote}
-    header_up X-Forwarded-For {remote}
-    header_up X-Forwarded-Proto {scheme}
-  }
-}
+#   # Проксирование к backend
+#   reverse_proxy backend:3005 {
+#     header_up Host {host}
+#     header_up X-Real-IP {remote}
+#     header_up X-Forwarded-For {remote}
+#     header_up X-Forwarded-Proto {scheme}
+#   }
+# }
