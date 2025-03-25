@@ -18,10 +18,10 @@ const Urls = {
   superSecretUrl: "https://api.nomoreparties.co/",
 
   // Для прода, менять в Auth.js
-  myapi: "https://api.probaland.ru",
+  myapi: "https://site.probaland.ru/api",
 
   // Для разработки, менять в Auth.js
-  myapidev: "http://backend:3005",
+  myapidev: "https://site.probaland.ru/api",
 };
 
 export { Pathes, Urls };
