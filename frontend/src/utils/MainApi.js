@@ -110,8 +110,8 @@ class Api {
 
 export const MainApi = new Api({
   // Ручной выбор API - для прода или разработки (dev)
-  baseUrl: Urls.myapidev,
-  // baseUrl: Urls.myapi,
+  // baseUrl: Urls.myapidev,
+  baseUrl: Urls.myapi,
   headers: {
     "Content-Type": "application/json",
   },

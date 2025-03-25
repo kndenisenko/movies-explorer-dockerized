@@ -17,9 +17,9 @@ const Urls = {
   // Отсюда берутся фильмы, не менять
   superSecretUrl: "https://api.nomoreparties.co/",
   // Нужно для прода (SSL делает Caddy)
-  myapi: "https://api.badass.nomoredomains.club",
-  // Нужно для разработки (внутрений SSL делает Caddy)
-  myapidev: "https://api.local",
+  myapi: "https://api.probaland.ru",
+  // Нужно для разработки
+  myapidev: "http://api.local",
 };
 
 export { Pathes, Urls };

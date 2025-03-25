@@ -37,7 +37,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Подключаемся к БД moongoose
 mongoose.set('strictQuery', false); // убираем warning из консоли при старте
-mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE_CONNECTION : constants.MONGO_BASE_CONNECTION_DEV);
+// Выбор между режимами отключён, так как проект сдан и оптимизирован только под запуск на проде.
+// mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE_CONNECTION : constants.MONGO_BASE_CONNECTION_DEV);
+
+mongoose.connect(process.env.MONGO_BASE_CONNECTION);
 
 route(app);
 

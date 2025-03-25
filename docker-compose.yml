@@ -35,6 +35,7 @@ services:
       - app-network
     depends_on:
       - frontend
+      - backend
 
   frontend:
     build:
@@ -56,8 +57,12 @@ services:
     expose:
       - 3005
     command: node app.js
+    env_file:
+      - ./backend/.env
     networks:
       - app-network
+    depends_on:
+      - mongo
 
 volumes:
   mongo-data:

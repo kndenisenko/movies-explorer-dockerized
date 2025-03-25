@@ -1,4 +1,4 @@
-site.local {
+site.probaland.ru {
   log {
     format json
   }
@@ -6,7 +6,7 @@ site.local {
   # Компрессия
   encode zstd gzip
 
-  # Самоподписной сертификат для внутреннего SSL
+  # Самоподписной сертификат для внешних подключений
   tls internal
 
   # Проверка здоровья сервиса
@@ -24,7 +24,7 @@ site.local {
   }
 }
 
-api.local {
+api.probaland.ru {
   log {
     format json
   }
@@ -32,7 +32,7 @@ api.local {
   # Компрессия
   encode zstd gzip
 
-  # Самоподписной сертификат для внутреннего SSL
+  # Самоподписной сертификат для внешних подключений
   tls internal
 
   # Проверка здоровья сервиса
@@ -41,7 +41,7 @@ api.local {
   }
   respond @health 200
 
-  # Проксирование к frontend
+  # Проксирование к backend
   reverse_proxy backend:3005 {
     header_up Host {host}
     header_up X-Real-IP {remote}
