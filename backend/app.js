@@ -36,7 +36,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Подключаемся к БД moongoose
-mongoose.set('strictQuery', false); // убираем warning из консоли при старте
+// mongoose.set('strictQuery', false); // убираем warning из консоли при старте
+mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE : constants.MONGO_BASE_DEV);
+
 
 // Отладочный вывод
 console.log('Переменные окружения:');
