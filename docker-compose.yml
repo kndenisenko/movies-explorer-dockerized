@@ -1,19 +1,21 @@
 services:
 
-  # mongo:
-  #   # image: mongo:4.2.4
-  #   image: mongo
-  #   restart: always
-  #   ports:
-  #     - 27017:27017
-  #   env_file:
-  #     - path: ./backend/.env
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-  #     MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
-  #   networks:
-  #     - app-network
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    env_file:
+      - ./backend/.env
+#   MongoDB env's listed in ./backend/.env 
+#   Docker compose automatically pick up it from there:
+#     MONGO_INITDB_ROOT_USERNAME
+#     MONGO_INITDB_ROOT_PASSWORD
+#     MONGO_INITDB_DATABASE
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
 
   caddy:
     image: caddy:latest
@@ -47,6 +49,7 @@ services:
       - app-network
 
 volumes:
+  mongo-data:
   caddy_data:
   caddy_config:
 
