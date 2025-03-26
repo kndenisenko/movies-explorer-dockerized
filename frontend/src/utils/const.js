@@ -14,9 +14,14 @@ const Pathes = {
 };
 
 const Urls = {
+  // Отсюда берутся фильмы, не менять
   superSecretUrl: "https://api.nomoreparties.co/",
-  myapi: "https://api.badass.nomoredomains.club",
-  myapidev: "http://localhost:3005",
+
+  // Для прода, менять в Auth.js
+  myapi: "https://site.probaland.ru/api",
+
+  // Для разработки, менять в Auth.js на фронте
+  myapidev: "https://site.probaland.ru/api",
 };
 
 export { Pathes, Urls };

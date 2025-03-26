@@ -13,7 +13,7 @@ const cors = require('./middlewares/cors');
 const rateLimit = require('./middlewares/rateLimit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-// const { NODE_ENV, PORT, MONGO_BASE } = process.env;
+// const { NODE_ENV, PORT, MONGO_BASE_CONNECTION } = process.env;
 
 // const { NotFoundError } = require('./errors/NotFoundError');
 const error500 = require('./middlewares/errorHandler');
@@ -37,7 +37,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Подключаемся к БД moongoose
 mongoose.set('strictQuery', false); // убираем warning из консоли при старте
-mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE : constants.MONGO_BASE_DEV);
+// Выбор между режимами отключён, так как проект сдан и оптимизирован только под запуск на проде.
+// mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGO_BASE_CONNECTION : constants.MONGO_BASE_CONNECTION_DEV);
+
+mongoose.connect(process.env.MONGO_BASE_CONNECTION);
 
 route(app);
 
@@ -45,7 +48,7 @@ route(app);
 app.use(errorLogger);
 
 // Обработка ошибок celebrate
-app.use(errors(app.err));
+app.use(errors());
 
 // // Ошибка 404 для несуществующих страниц
 // app.use((req, res, next) => {
@@ -57,6 +60,7 @@ error500(app);
 
 console.log('status', process.env.NODE_ENV);
 console.log('port', process.env.PORT);
+
 
 app.listen(process.env.NODE_ENV === 'production' ? process.env.PORT : 3004, () => {
 });

@@ -1,7 +1,7 @@
 const constants = {
   REG_LINK: /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/,
-  MONGO_BASE_DEV: 'mongodb://localhost:27017/bitfilmsdbdev',
-  MONGO_BASE: 'mongodb://localhost:27017/bitfilmsdb',
+  MONGO_BASE_CONNECTION_DEV: 'mongodb://rrrroot:example@mongo:27017/bitfilmsdbdev?authSource=admin',
+  MONGO_BASE_CONNECTION: 'mongodb://rrrroot:example@mongo:27017/bitfilmsdb?authSource=admin',
   EMAIL_USERNAME_VALIDATION_FAILED: 'Ошибка 400 - некорретный адрес электронной почты или имени пользователя',
   MOVIE_VALIDATION_FAILED: 'Ошибка 400 - Переданы некорректные данные при создании фильма',
   MOVIE_ID_VALIDATION_FAILED: 'Ошибка 400 - Передан неверный id',

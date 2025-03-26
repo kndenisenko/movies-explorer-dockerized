@@ -1,12 +1,29 @@
 // mw-cors
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const options = [
+  'http://localhost:8080',
   'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'http://localhost:3003',
+  'http://localhost:3004',
   'http://localhost:3005',
-  'http://badass.nomoredomains.club',
-  'https://badass.nomoredomains.club',
-  'http://api.badass.nomoredomains.club',
-  'https://api.badass.nomoredomains.club',
+  'https://site.local',
+  'http://site.local',
+  'http://api.local',
+  'https://api.local',
+  'https://dev.probaland.ru',
+  'http://dev.probaland.ru',
+  'https://api.probaland.ru',
+  'http://api.probaland.ru',
+  'https://probaland.ru',
+  'http://probaland.ru',
+  'https://site.probaland.ru',
+  'http://site.probaland.ru',
+  // 'http://badass.nomoredomains.club',
+  // 'https://badass.nomoredomains.club',
+  // 'http://api.badass.nomoredomains.club',
+  // 'https://api.badass.nomoredomains.club',
   // 'https://YOUR.github.io',
 ];
 
