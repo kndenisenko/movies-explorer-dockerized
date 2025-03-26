@@ -1,4 +1,4 @@
-dev.probaland.ru {
+site.probaland.ru {
   log {
     format json
   }
@@ -6,8 +6,13 @@ dev.probaland.ru {
   # Компрессия
   encode zstd gzip
 
-  # Самоподписной сертификат для внутренних подключений 
-  tls internal
+  # Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
+  # но сохранить возможность использования внутренних сертификатов
+  tls {
+    issuer acme {
+      disable_http_challenge
+    }
+  }
 
   # Проверка здоровья сервиса
   @health {
@@ -39,29 +44,3 @@ dev.probaland.ru {
     }
   }
 }
-
-# api.probaland.ru {
-#   log {
-#     format json
-#   }
-
-#   # Компрессия
-#   encode zstd gzip
-
-#   # Самоподписной сертификат для внешних подключений
-#   tls internal
-
-#   # Проверка здоровья сервиса
-#   @health {
-#     path /health
-#   }
-#   respond @health 200
-
-#   # Проксирование к backend
-#   reverse_proxy backend:3005 {
-#     header_up Host {host}
-#     header_up X-Real-IP {remote}
-#     header_up X-Forwarded-For {remote}
-#     header_up X-Forwarded-Proto {scheme}
-#   }
-# }
