@@ -1,4 +1,4 @@
-site.probaland.ru {
+dev.probaland.ru {
   log {
     format json
   }
@@ -6,7 +6,7 @@ site.probaland.ru {
   # Компрессия
   encode zstd gzip
 
-  # Самоподписной сертификат для внешних подключений
+  # Самоподписной сертификат для внутренних подключений 
   tls internal
 
   # Проверка здоровья сервиса
@@ -17,6 +17,10 @@ site.probaland.ru {
 
   # Проксирование к backend
   handle /api/* {
+    # Вырезаем префикс /api/ во время передачи данных в бэк,
+    # Так надо потому что бэк не был настроен на работу через префикс
+    uri strip_prefix /api
+    # Проксирование контейнера
     reverse_proxy backend:3005 {
       header_up Host {host}
       header_up X-Real-IP {remote}

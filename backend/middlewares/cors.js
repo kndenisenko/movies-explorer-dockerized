@@ -12,6 +12,8 @@ const options = [
   'http://site.local',
   'http://api.local',
   'https://api.local',
+  'https://dev.probaland.ru',
+  'http://dev.probaland.ru',
   'https://api.probaland.ru',
   'http://api.probaland.ru',
   'https://probaland.ru',
