@@ -8,12 +8,10 @@ const options = [
   'http://localhost:3003',
   'http://localhost:3004',
   'http://localhost:3005',
-  'https://dev.probaland.ru',
-  'http://dev.probaland.ru',
-  'https://probaland.ru',
-  'http://probaland.ru',
-  'https://site.probaland.ru',
-  'http://site.probaland.ru',
+  process.env.FRONT_DOMAIN_PROD,
+  process.env.FRONT_DOMAIN_DEV
+
+  // Это на память - домены 3-го уровня от яндекса
   // 'http://badass.nomoredomains.club',
   // 'https://badass.nomoredomains.club',
   // 'http://api.badass.nomoredomains.club',

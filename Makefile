@@ -8,17 +8,20 @@ install:
 	npm install
 
 prepare-debian:
-	cp backend/example.env backend/.env
-	JWTKEY=$$(openssl rand -hex 32) && sed -i "s/JWTKEY/$$JWTKEY/g" backend/.env
-	PASSWORD=$$(openssl rand -hex 10) && sed -i "s/mongopwd/$$PASSWORD/g" backend/.env
+	cp example.env .env
+	JWTKEY=$$(openssl rand -hex 32) && sed -i "s/JWTKEY/$$JWTKEY/g" .env
+	PASSWORD=$$(openssl rand -hex 10) && sed -i "s/mongopwd/$$PASSWORD/g" .env
 
 prepare-macos:
-	cp backend/example.env backend/.env
-	JWTKEY=$$(openssl rand -hex 32) && sed -i '' "s/JWTKEY/$$JWTKEY/g" backend/.env
-	PASSWORD=$$(openssl rand -hex 10) && sed -i '' "s/mongopwd/$$PASSWORD/g" backend/.env
+	cp example.env .env
+	JWTKEY=$$(openssl rand -hex 32) && sed -i '' "s/JWTKEY/$$JWTKEY/g" .env
+	PASSWORD=$$(openssl rand -hex 10) && sed -i '' "s/mongopwd/$$PASSWORD/g" .env
 
 up:
-	docker compose up -d
+	docker compose -f docker-compose.yml up -d
+
+dev:
+	docker compose -f docker-compose.dev.yml up -d
 
 down:
 	docker compose down

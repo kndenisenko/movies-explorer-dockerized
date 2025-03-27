@@ -1,18 +1,23 @@
-probaland.ru {
+#Dev File
+
+dev.probaland.ru {
   log {
     format json
   }
 
   # Компрессия
   encode zstd gzip
+  
+  # выдача внутреннего корневого сертификата для удобства разработки
+  tls internal
 
-  # Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
-  # но сохранить возможность использования внутренних сертификатов
-  tls {
-    issuer acme {
-      disable_http_challenge
-    }
-  }
+  ### Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
+  ### но сохранить возможность использования внутренних сертификатов
+  # tls {
+  #   issuer acme {
+  #     disable_http_challenge
+  #   }
+  # }
 
   # Проверка здоровья сервиса
   @health {
@@ -44,3 +49,5 @@ probaland.ru {
     }
   }
 }
+
+#Dev File

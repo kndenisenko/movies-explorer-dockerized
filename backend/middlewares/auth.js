@@ -13,7 +13,7 @@ const isAuthorized = (req, res, next) => {
   const auth = req.headers.authorization;
   // Если аутентификация неудачна
   if (!auth) {
-    console.log('auth', req.headers.authorization);
+    console.log('authorization error:', req.headers.authorization);
     throw new UnauthorizedError(constants.AUTH_FAILED_TOCKEN_CHECK);
   }
 
