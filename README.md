@@ -25,4 +25,4 @@
 - `cd movies-explorer-dockerized`
 - `make prepare-debian` или make `prepare-macos`
 - `make dev` или `docker compose -f docker-compose.dev.yml up -d`
-- открыть https://dev.probaland.ru
+- Открыть https://dev.probaland.ru. При первом открытии надо принять сертификат. В Safai возможны проблемы совместимости
