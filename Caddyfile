@@ -1,4 +1,4 @@
-site.probaland.ru {
+probaland.ru {
   log {
     format json
   }
