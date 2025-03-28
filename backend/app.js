@@ -56,6 +56,7 @@ app.use(errors());
 error500(app);
 
 console.log('status', process.env.NODE_ENV);
+console.log('Port', process.env.BACKEND_PORT);
 
 
 app.listen(process.env.BACKEND_PORT, () => {
