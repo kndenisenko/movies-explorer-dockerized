@@ -1,60 +1,60 @@
 #Dev File
 
 dev.probaland.ru {
-  log {
-    format json
-  }
+	log {
+		format json
+	}
 
-  # Компрессия
-  encode zstd gzip
-  
-  # выдача внутреннего корневого сертификата для удобства разработки
-  tls internal
+	# Компрессия
+	encode zstd gzip
 
-  ### Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
-  ### но сохранить возможность использования внутренних сертификатов
-  # tls {
-  #   issuer acme {
-  #     disable_http_challenge
-  #   }
-  # }
+	# выдача внутреннего корневого сертификата для удобства разработки
+	tls internal
 
-  # Проверка здоровья сервиса
-  @health {
-    path /health
-  }
-  respond @health 200
+	### Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
+	### но сохранить возможность использования внутренних сертификатов
+	# tls {
+	#   issuer acme {
+	#     disable_http_challenge
+	#   }
+	# }
 
-  # Проксирование к backend
-  handle /api/* {
-    # Вырезаем префикс /api/ во время передачи данных в бэк,
-    # Так надо потому что бэк не был настроен на работу через префикс
-    uri strip_prefix /api
-    # Проксирование контейнера
-    reverse_proxy backend:3005 {
-      header_up Host {host}
-      header_up X-Real-IP {remote}
-      header_up X-Forwarded-For {remote}
-      header_up X-Forwarded-Proto {scheme}
-    }
-  }
+	# Проверка здоровья сервиса
+	@health {
+		path /health
+	}
+	respond @health 200
 
-  # Проксирование к frontend
-  handle {
-    reverse_proxy frontend:8080 {
-      header_up Host {host}
-      header_up X-Real-IP {remote}
-      header_up X-Forwarded-For {remote}
-      header_up X-Forwarded-Proto {scheme}
-    }
-  }
+	# Проксирование к backend
+	handle /api/* {
+		# Вырезаем префикс /api/ во время передачи данных в бэк,
+		# Так надо потому что бэк не был настроен на работу через префикс
+		uri strip_prefix /api
+		# Проксирование контейнера
+		reverse_proxy backend:3005 {
+			header_up Host {host}
+			header_up X-Real-IP {remote}
+			header_up X-Forwarded-For {remote}
+			header_up X-Forwarded-Proto {scheme}
+		}
+	}
+
+	# Проксирование к frontend
+	handle {
+		reverse_proxy frontend:8080 {
+			header_up Host {host}
+			header_up X-Real-IP {remote}
+			header_up X-Forwarded-For {remote}
+			header_up X-Forwarded-Proto {scheme}
+		}
+	}
 }
 
 stat.probaland.ru {
-  # выдача внутреннего корневого сертификата для удобства разработки
-  tls internal
-  
-  reverse_proxy dozzle:3001
+	# выдача внутреннего корневого сертификата для удобства разработки
+	tls internal
+
+	reverse_proxy dozzle:3001
 }
 
 #Dev File
