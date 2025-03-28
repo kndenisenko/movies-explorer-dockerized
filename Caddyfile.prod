@@ -10,11 +10,11 @@ probaland.ru {
 
 	# Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
 	# но сохранить возможность использования внутренних сертификатов
-	tls {
-		issuer acme {
-			disable_http_challenge
-		}
-	}
+	# tls {
+	# 	issuer acme {
+	# 		disable_http_challenge
+	# 	}
+	# }
 
 	# Проверка здоровья сервиса
 	@health {
