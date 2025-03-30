@@ -18,10 +18,12 @@ const Urls = {
   superSecretUrl: "https://api.nomoreparties.co/",
 
   // Для прода, менять в Auth.js
-  myapi: "https://site.probaland.ru/api",
-
+  // myapi: "https://site.probaland.ru/api",
   // Для разработки, менять в Auth.js на фронте
-  myapidev: "https://site.probaland.ru/api",
+  // myapidev: "https://site.probaland.ru/api",
+
+  // автовыбор на основе ENV в файлах docker.compose
+  myapi: (process.env.NODE_ENV === 'production' ? process.env.FRONT_DOMAIN_PROD + "/api" : process.env.FRONT_DOMAIN_DEV + "/api")
 };
 
 export { Pathes, Urls };
