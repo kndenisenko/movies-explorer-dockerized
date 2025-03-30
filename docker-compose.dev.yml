@@ -49,6 +49,8 @@ services:
     #   - "8080:8080"
     expose:
       - 8080
+    env_file:
+      - .env
     environment:
       - NODE_ENV=development
     command: npm run start
