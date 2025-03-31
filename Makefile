@@ -25,3 +25,17 @@ down:
 # Когда надо пересобрать фронт и бэк
 rebuild:
 	docker compose build backend frontend
+
+# Провека того, сколько места занимают данные докера
+check:
+	docker system df
+
+# Экстерминатус для Linux
+exterminatus:
+	echo "Checks before cleaning"
+	docker compose down
+	docker system df -v
+	docker system prune -a --volumes
+	docker volume rm $(docker volume ls -q)
+	echo "Checks after cleaning"
+	docker system df -v

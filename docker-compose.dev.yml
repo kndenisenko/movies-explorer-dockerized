@@ -53,6 +53,7 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - REACT_APP_NODE_ENV=development
     command: npm run start
     networks:
       - app-network
@@ -72,6 +73,7 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - REACT_APP_NODE_ENV=development
     networks:
       - app-network
     depends_on:
