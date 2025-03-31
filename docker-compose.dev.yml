@@ -53,11 +53,13 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - REACT_APP_NODE_ENV=development
     command: npm run start
     networks:
       - app-network
 
   backend:
+    restart: always
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -71,6 +73,7 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - REACT_APP_NODE_ENV=development
     networks:
       - app-network
     depends_on:
@@ -88,7 +91,7 @@ services:
     environment:
       DOZZLE_ENABLE_ACTIONS: true
       DOZZLE_ADDR: :3001
-      DOZZLE_HOSTNAME: stat-dev.probaland.ru
+      DOZZLE_HOSTNAME: dev-stat.probaland.ru
     networks:
       - app-network
 

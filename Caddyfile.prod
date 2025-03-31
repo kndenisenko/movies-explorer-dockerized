@@ -43,4 +43,8 @@ probaland.ru {
 	}
 }
 
+stat.probaland.ru {
+	reverse_proxy dozzle:3001
+}
+
 #Prod File

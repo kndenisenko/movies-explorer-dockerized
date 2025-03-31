@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Подключаемся к БД moongoose
 mongoose.set('strictQuery', false); // убираем warning из консоли при старте
 mongoose.connect(process.env.MONGO_BASE_CONNECTION);
+// mongoose.connect('mongodb://user:31850044a52f921a6a91@mongo:27017/bitfilmsdb?authSource=admin');
 
 route(app);
 

@@ -1,10 +1,10 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const { ConflictError } = require('../errors/ConflictError');
 const { ValidationError } = require('../errors/ValidationError');
 const { constants } = require('../const/const');
-// const { NODE_ENV, JWT_SECRET } = process.env;
+// const { NODE_ENV, REACT_APP_JWT_SECRET } = process.env;
 
 // Контроллер изменения имени и почты Юзера updateUser
 function updateUser(req, res, next) {
@@ -66,7 +66,7 @@ module.exports.login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'blah-blah-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.REACT_APP_JWT_SECRET : 'blah-blah-key', { expiresIn: '7d' });
       res.send({ token, userId: user._id });
     })
     .catch((err) => {

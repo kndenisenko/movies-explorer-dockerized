@@ -46,7 +46,7 @@ dev.probaland.ru {
 	}
 }
 
-stat.probaland.ru {
+dev-stat.probaland.ru {
 	# выдача внутреннего корневого сертификата для удобства разработки
 	tls internal
 
