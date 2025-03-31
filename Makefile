@@ -12,10 +12,14 @@ prepare-macos:
 
 # запуск на проде
 prod:
+	export UID=$(id -u)
+	export GID=$(id -g)
 	docker compose -f docker-compose.yml up -d
 
 # запуск разработки
 dev:
+	export UID=$(id -u)
+	export GID=$(id -g)
 	docker compose -f docker-compose.dev.yml up -d
 
 # Остановка
