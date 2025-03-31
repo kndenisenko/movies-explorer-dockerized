@@ -23,7 +23,7 @@ const Urls = {
   // myapidev: "https://site.probaland.ru/api",
 
   // автовыбор на основе ENV в файлах docker.compose
-  myapi: (process.env.NODE_ENV === 'production' ? process.env.FRONT_DOMAIN_PROD + "/api" : process.env.FRONT_DOMAIN_DEV + "/api")
+  myapi: (process.env.NODE_ENV === 'production' ? process.env.REACT_APP_FRONT_DOMAIN_PROD + "/api" : process.env.REACT_APP_FRONT_DOMAIN_DEV + "/api")
 };
 
 export { Pathes, Urls };

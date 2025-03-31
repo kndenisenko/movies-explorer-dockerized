@@ -58,6 +58,7 @@ services:
       - app-network
 
   backend:
+    restart: always
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -88,7 +89,7 @@ services:
     environment:
       DOZZLE_ENABLE_ACTIONS: true
       DOZZLE_ADDR: :3001
-      DOZZLE_HOSTNAME: stat-dev.probaland.ru
+      DOZZLE_HOSTNAME: dev-stat.probaland.ru
     networks:
       - app-network
 
