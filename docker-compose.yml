@@ -16,7 +16,7 @@ services:
 #     MONGO_INITDB_ROOT_PASSWORD
 #     MONGO_INITDB_DATABASE
     volumes:
-      - mongo-data:/data/db
+      - ./mongodata:/data/db
     networks:
       - app-network
 
@@ -98,7 +98,6 @@ services:
       - app-network
 
 volumes:
-  mongo-data:
   caddy_data:
   caddy_config:
 
