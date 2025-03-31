@@ -1,0 +1,11 @@
+# Файл со сп сокм юзеров для Dozzle
+# Пока добавлен только admin
+# Login admin
+# Pass  admin
+
+users:
+  admin:
+    email: admin@probaland.ru
+    name: Site Admin
+    password: $2a$11$XPLtq3VycGHl6sExetfalO8v2toriP7ttPqTOJ/sTNHmERqef5cKW
+    filter: ""

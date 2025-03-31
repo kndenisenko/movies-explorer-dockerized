@@ -33,9 +33,14 @@ check:
 # Экстерминатус для Linux
 exterminatus:
 	echo "Checks before cleaning"
+	echo "----------------------"
 	docker compose down
+	echo "----------------------"
 	docker system df -v
+	echo "----------------------"
 	docker system prune -a --volumes
-	docker volume rm $(docker volume ls -q)
+	echo "----------------------"
+#	docker volume rm $(docker volume ls -q)
 	echo "Checks after cleaning"
+	echo "----------------------"
 	docker system df -v

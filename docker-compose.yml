@@ -78,16 +78,19 @@ services:
     depends_on:
       - mongo
 
+# Мониторинг контейнеров
   dozzle:
     image: amir20/dozzle:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./DozzleUsers.yml:/data/users.yml
     expose:
       - 3001
     # Убираем прямое проксирование порта, так как будем использовать Caddy
     # ports:
     #   - 3001:3001
     environment:
+      DOZZLE_AUTH_PROVIDER: simple
       DOZZLE_ENABLE_ACTIONS: true
       DOZZLE_ADDR: :3001
       DOZZLE_HOSTNAME: stat.probaland.ru
