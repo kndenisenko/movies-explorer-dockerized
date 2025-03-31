@@ -2,6 +2,9 @@
 .idea
 .vscode
 
+# Dont track mongoDB Data folder
+mongodata
+
 # ENV files
 process.env
 .env
