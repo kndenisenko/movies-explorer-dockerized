@@ -1,4 +1,7 @@
 #Dev File
+{
+	local_certs
+}
 
 dev.probaland.ru {
 	log {
@@ -9,7 +12,7 @@ dev.probaland.ru {
 	encode zstd gzip
 
 	# выдача внутреннего корневого сертификата для удобства разработки
-	tls internal
+	# tls internal
 
 	### Конфигурация TLS: использовать Let's Encrypt для внешних подключений,
 	### но сохранить возможность использования внутренних сертификатов
@@ -48,7 +51,7 @@ dev.probaland.ru {
 
 dev-stat.probaland.ru {
 	# выдача внутреннего корневого сертификата для удобства разработки
-	tls internal
+	# tls internal
 
 	reverse_proxy dozzle:3001
 }
