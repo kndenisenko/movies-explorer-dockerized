@@ -43,4 +43,11 @@ probaland.ru {
 	}
 }
 
+stat.probaland.ru {
+	# выдача внутреннего корневого сертификата для удобства разработки
+	tls internal
+
+	reverse_proxy dozzle:3001
+}
+
 #Prod File
