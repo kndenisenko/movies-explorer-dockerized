@@ -25,5 +25,5 @@
 - `git clone https://github.com/kndenisenko/movies-explorer-dockerized.git`
 - `cd movies-explorer-dockerized`
 - `make prepare-debian` (Debian, Ububtu) или make `prepare-macos` в зависимости от ОС. 
-- `make dev` или `docker compose -f docker-compose.dev.yml up -d`
+- `make dev` или `export UID=$(id -u) && export GID=$(id -g) && docker compose -f docker-compose.yml up -d`
 - Открыть https://dev.probaland.ru. При первом открытии надо принять сертификат. В Safari возможны проблемы совместимости. Если появляется ошибка типа SEC_ERROR_UNKNOWN_ISSUER, то надо почистить кэш браузера

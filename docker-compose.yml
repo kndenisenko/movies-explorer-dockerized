@@ -2,6 +2,7 @@ services:
 
   mongo:
     image: mongo
+    user: "${UID}:${GID}"
     restart: always
     expose:
       - 27017
