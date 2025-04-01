@@ -6,23 +6,19 @@ on:
     workflows: ["Docker Compose Test"]  
     types:
       - completed
+    branches:
+      - dev
 
 jobs:
   after-test:
+    # Запускать только если предыдущий workflow был успешным
+    if: github.event.workflow_run.conclusion == 'success' 
     runs-on: ubuntu-latest
     steps:
       - name: Проверка репозитория
         uses: actions/checkout@v3
       
-      - name: Проверка статуса предыдущего workflow
-        run: |
-          echo "Предыдущий workflow завершился со статусом: ${{ github.event.workflow_run.conclusion }}"
-          if [ "${{ github.event.workflow_run.conclusion }}" != "success" ]; then
-            echo "Предыдущий workflow завершился с ошибкой, прерываем выполнение"
-            exit 1
-          fi
-      
-      # Команды после успешного выполнения dev-test
       - name: Пример действия после dev-test
         run: |
+          echo "Этот Action (${{ github.workflow }}) запускается после успешного выполнения workflow '${{ github.event.workflow_run.workflow.name }}' на ветке ${{ github.event.workflow_run.head_branch }}"
           echo "Этот Action запускается после успешного выполнения dev-test"
