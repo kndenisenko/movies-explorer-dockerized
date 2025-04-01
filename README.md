@@ -1,11 +1,9 @@
 # movies-explorer-dockerized
 
-[![Dev Test & Dev Update](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml/badge.svg)](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml)
-
-[![Prod Test & Prod Update](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/main.yml/badge.svg)](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/main.yml)
+[![Dev Test & Dev Update](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml/badge.svg)](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml) [![Prod Test & Prod Update](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/main.yml/badge.svg)](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/main.yml)
 
 ## Что было вначале
-В этом проекте объединены [фронтенд](https://github.com/kndenisenko/movies-explorer-frontend) и [бэкенд](https://github.com/kndenisenko/movies-explorer-api) дипломного проекта яндекс-практикума по программе "Веб-разработчик". Ранее требовалось вручную разворачивть фронт и бэк на сервере, запускать и мониторить их через PM2, отдельно ставить и настраивать БД, реверс-проекси и заодно решать вопрос с SSL. И вручную переключатся между средами: прод или дев.
+В этом проекте объединены [фронтенд](https://github.com/kndenisenko/movies-explorer-frontend) и [бэкенд](https://github.com/kndenisenko/movies-explorer-api) дипломного проекта яндекс-практикума по программе "Веб-разработчик". Ранее требовалось вручную разворачивть фронт и бэк на сервере, запускать и мониторить их через PM2, отдельно ставить и настраивать БД, реверс-проекси и заодно решать вопрос с SSL. И вручную переключатся между средами: прод или дев. Теперь эти недостатки исправлены. Два проекта объединены в один и работают через Docker. 
 
 
 ### Адаптация и запуск через Docker Compose
