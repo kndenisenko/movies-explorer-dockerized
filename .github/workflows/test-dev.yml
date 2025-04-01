@@ -21,16 +21,7 @@ jobs:
       
       - name: Создание .env файла
         run: |
-          make --help
-          ls -la
-          echo "MONGO_INITDB_ROOT_USERNAME=root" >> .env
-          echo "MONGO_INITDB_ROOT_PASSWORD=example" >> .env
-          echo "MONGO_INITDB_DATABASE=bitfilmsdb" >> .env
-          echo "JWT_SECRET=dev-secret" >> .env
-          echo "NODE_ENV=development" >> .env
-          echo "REACT_APP_NODE_ENV=development" >> .env
-          echo "UID=$(id -u)" >> .env
-          echo "GID=$(id -g)" >> .env
+          make prepare-debian
           cat .env
       
       - name: Проверка файла docker-compose.dev.yml
