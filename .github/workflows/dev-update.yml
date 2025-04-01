@@ -1,6 +1,9 @@
 name: Deploy Dev Branch
 
 on:
+  push:
+    branches:
+      - dev
   # Запуск после успешного выполнения workflow test-dev
   workflow_run:
     workflows: ["Docker Compose Test"]
