@@ -62,7 +62,7 @@ jobs:
 
   dev-update:
     runs-on: ubuntu-latest
-    # needs: dev-test
+    needs: dev-test
     steps:
       - name: Выполнение команд SSH с помощью ключа
         uses: appleboy/ssh-action@v1
