@@ -65,4 +65,6 @@ jobs:
         if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
       
       - name: Завершение workflow
-        run: echo 'Workflow завершен успешно'
+        run: |
+          echo 'Workflow завершен успешно'
+          exit 0
