@@ -1,4 +1,4 @@
-name: After Dev Test
+name: Dev Update
 
 on:
   workflow_run:
