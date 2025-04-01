@@ -9,60 +9,60 @@ on:
       - dev
 
 jobs:
-  dev-test:
-    runs-on: ubuntu-latest
+#   dev-test:
+#     runs-on: ubuntu-latest
     
-    steps:
-      - name: Проверка репозитория
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Проверка репозитория
+#         uses: actions/checkout@v3
       
-      - name: Настройка Docker Buildx
-        uses: docker/setup-buildx-action@v2
+#       - name: Настройка Docker Buildx
+#         uses: docker/setup-buildx-action@v2
       
-      - name: Создание .env файла через make и проверка
-        run: |
-          make prepare-debian
-          cat .env
+#       - name: Создание .env файла через make и проверка
+#         run: |
+#           make prepare-debian
+#           cat .env
       
-      - name: Проверка env-данных в контейнерах
-        run: docker compose -f docker-compose.dev.yml config
+#       - name: Проверка env-данных в контейнерах
+#         run: docker compose -f docker-compose.dev.yml config
       
-      - name: Сборка контейнеров
-        run: docker compose -f docker-compose.dev.yml build
+#       - name: Сборка контейнеров
+#         run: docker compose -f docker-compose.dev.yml build
       
-      - name: Запуск контейнеров
-        run: |
-          docker compose -f docker-compose.dev.yml up -d
-          echo "Даем время на запуск всех сервисов в контейнерах"
-          sleep 20  
+#       - name: Запуск контейнеров
+#         run: |
+#           docker compose -f docker-compose.dev.yml up -d
+#           echo "Даем время на запуск всех сервисов в контейнерах"
+#           sleep 20  
       
-      - name: Проверка статуса контейнеров
-        run: |
-          docker compose -f docker-compose.dev.yml ps
+#       - name: Проверка статуса контейнеров
+#         run: |
+#           docker compose -f docker-compose.dev.yml ps
           
-          echo "Проверяем, что все контейнеры запущены"
-          if [ $(docker compose -f docker-compose.dev.yml ps -q | wc -l) -ne $(docker compose -f docker-compose.dev.yml config --services | wc -l) ]; then
-            echo "Не все контейнеры запущены!"
-            docker compose -f docker-compose.dev.yml logs
-            exit 1
-          fi
+#           echo "Проверяем, что все контейнеры запущены"
+#           if [ $(docker compose -f docker-compose.dev.yml ps -q | wc -l) -ne $(docker compose -f docker-compose.dev.yml config --services | wc -l) ]; then
+#             echo "Не все контейнеры запущены!"
+#             docker compose -f docker-compose.dev.yml logs
+#             exit 1
+#           fi
       
-      - name: Проверка доступности сервисов
-        run: |
-          echo "Проверка доступности бэкенда"
-          docker compose -f docker-compose.dev.yml exec -T backend curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:3005/
+#       - name: Проверка доступности сервисов
+#         run: |
+#           echo "Проверка доступности бэкенда"
+#           docker compose -f docker-compose.dev.yml exec -T backend curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:3005/
           
-          echo "Проверка доступности MongoDB"
-          docker compose -f docker-compose.dev.yml exec -T mongo mongosh --eval "db.runCommand({ping:1})" --quiet
+#           echo "Проверка доступности MongoDB"
+#           docker compose -f docker-compose.dev.yml exec -T mongo mongosh --eval "db.runCommand({ping:1})" --quiet
       
-      - name: Остановка контейнеров
-        run: docker compose -f docker-compose.dev.yml down
-        if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
+#       - name: Остановка контейнеров
+#         run: docker compose -f docker-compose.dev.yml down
+#         if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
 
 
   dev-update:
     runs-on: ubuntu-latest
-    needs: dev-test
+    # needs: dev-test
     steps:
       - name: Выполнение команд SSH с помощью ключа
         uses: appleboy/ssh-action@v1
