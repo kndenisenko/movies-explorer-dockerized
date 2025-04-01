@@ -63,3 +63,6 @@ jobs:
       - name: Остановка контейнеров
         run: docker compose -f docker-compose.dev.yml down
         if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
+      
+      - name: Завершение workflow
+        run: echo 'Workflow завершен успешно'
