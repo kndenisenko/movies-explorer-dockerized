@@ -1,24 +1,21 @@
-name: Dev Update
+name: Docker Compose Update
 
 on:
-  workflow_run:
-    # Имя должно совпадать с именем workflow в dev-test.yml
-    workflows: ["Docker Compose Test"]  
-    types:
-      - completed
+  push:
+    branches:
+      - dev
+  pull_request:
     branches:
       - dev
 
 jobs:
-  after-test:
-    # Запускать только если предыдущий workflow был успешным
-    if: github.event.workflow_run.conclusion == 'success' 
+  call-test-workflow:
+    uses: ./.github/workflows/dev-test.yml
+    
+  dev-update:
+    needs: call-test-workflow
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Проверка репозитория
-        uses: actions/checkout@v3
-      
-      - name: Пример действия после dev-test
-        run: |
-          echo "Этот Action (${{ github.workflow }}) запускается после успешного выполнения workflow '${{ github.event.workflow_run.workflow.name }}' на ветке ${{ github.event.workflow_run.head_branch }}"
-          echo "Этот Action запускается после успешного выполнения dev-test"
+      - name: Выполнение обновления
+        run: echo "helloworld"
