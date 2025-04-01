@@ -65,7 +65,8 @@ jobs:
     # needs: dev-test
     steps:
       - name: Выполнение команд SSH с помощью ключа
-        uses: appleboy/ssh-action@v1
+        uses: actions/checkout@v3
+        # uses: appleboy/ssh-action@v1
       - name: проверка секретов
         run: |
           cat ${{ secrets.SERVER_IP }}
