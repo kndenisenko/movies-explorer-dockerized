@@ -66,13 +66,21 @@ jobs:
     steps:
       - name: Выполнение команд SSH с помощью ключа
         uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.KEY }}
-          port: 22
-          script: |
-            ls -la
-            cd ${{ secrets.PROJECT_PATH_DEV }}
-            git reset --hard
-            git pull origin dev
+      - name: проверка секретов
+        run: |
+          cat ${{ secrets.SERVER_IP }}
+          cat ${{ secrets.SERVER_USER }}
+          cat ${{ secrets.KEY }}
+          cat ${{ secrets.PROJECT_PATH_DEV }}
+
+
+        # with:
+        #   host: ${{ secrets.SERVER_IP }}
+        #   username: ${{ secrets.SERVER_USER }}
+        #   key: ${{ secrets.KEY }}
+        #   port: 22
+        #   script: |
+        #     ls -la
+        #     cd ${{ secrets.PROJECT_PATH_DEV }}
+        #     git reset --hard
+        #     git pull origin dev
