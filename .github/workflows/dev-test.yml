@@ -9,7 +9,7 @@ on:
       - dev
 
 jobs:
-  test-dev-branch:
+  dev-test:
     runs-on: ubuntu-latest
     
     steps:
@@ -58,3 +58,27 @@ jobs:
       - name: Остановка контейнеров
         run: docker compose -f docker-compose.dev.yml down
         if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
+
+  dev-update:
+    runs-on: ubuntu-latest
+    # Запускается только если предыдущий workflow был успешным
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    
+    steps:
+      - name: Настройка SSH ключа
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Добавление сервера в known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          
+      - name: Обновление репозитория на сервере
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd ${{ secrets.PROJECT_PATH_DEV }} && git reset --hard && git pull origin dev"
+          
+      # - name: Проверка статуса после обновления
+      #   run: |
+      #     ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd ${{ secrets.PROJECT_PATH_DEV }} && docker compose -f docker-compose.dev.yml ps"
