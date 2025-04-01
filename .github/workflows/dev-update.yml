@@ -4,17 +4,12 @@ on:
   push:
     branches:
       - dev
-  # Запуск после успешного выполнения workflow test-dev
   workflow_run:
     workflows: ["Docker Compose Test"]
-    # Запуск начнётся даже если workflow завершился с ошибкой
     types:
       - completed
-    # Ограничение запуска по ветке, в которой прошёл workflow
     branches:
       - dev
-  
-  # Оставялкс возможность запуска вручную, через Github Actions
   workflow_dispatch:
 
 jobs:
