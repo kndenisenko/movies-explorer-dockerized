@@ -1,0 +1,66 @@
+name: Docker Compose Test
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  test-docker-compose:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Проверка кода
+        uses: actions/checkout@v3
+      
+      - name: Настройка Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Создание .env файла
+        run: |
+          ls -la
+          echo "MONGO_INITDB_ROOT_USERNAME=root" >> .env
+          echo "MONGO_INITDB_ROOT_PASSWORD=example" >> .env
+          echo "MONGO_INITDB_DATABASE=bitfilmsdb" >> .env
+          echo "JWT_SECRET=dev-secret" >> .env
+          echo "NODE_ENV=development" >> .env
+          echo "REACT_APP_NODE_ENV=development" >> .env
+          echo "UID=$(id -u)" >> .env
+          echo "GID=$(id -g)" >> .env
+      
+      - name: Проверка файла docker-compose.dev.yml
+        run: docker-compose -f docker-compose.dev.yml config
+      
+      - name: Сборка контейнеров
+        run: docker-compose -f docker-compose.dev.yml build
+      
+      - name: Запуск контейнеров
+        run: |
+          docker-compose -f docker-compose.dev.yml up -d
+          sleep 30  # Даем время на запуск всех сервисов
+      
+      - name: Проверка статуса контейнеров
+        run: |
+          docker-compose -f docker-compose.dev.yml ps
+          
+          # Проверяем, что все контейнеры запущены
+          if [ $(docker-compose -f docker-compose.dev.yml ps -q | wc -l) -ne $(docker-compose -f docker-compose.dev.yml config --services | wc -l) ]; then
+            echo "Не все контейнеры запущены!"
+            docker-compose -f docker-compose.dev.yml logs
+            exit 1
+          fi
+      
+      - name: Проверка доступности сервисов
+        run: |
+          # Проверка доступности бэкенда
+          docker-compose -f docker-compose.dev.yml exec -T backend curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:3005/
+          
+          # Проверка доступности MongoDB
+          docker-compose -f docker-compose.dev.yml exec -T mongo mongosh --eval "db.runCommand({ping:1})" --quiet
+      
+      - name: Остановка контейнеров
+        run: docker-compose -f docker-compose.dev.yml down
+        if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
