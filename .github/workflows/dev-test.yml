@@ -67,8 +67,9 @@ jobs:
 
   dev-update:
     runs-on: ubuntu-latest
-
+    needs: dev-test
     steps:
-      - name: Просто тест второго джоба
+
+      - name: Запуск второй работы
         run: |
-          echo "hello world"
+          echo "Запуск второй работы"
