@@ -2,13 +2,13 @@
 prepare-debian:
 	cp example.env .env
 	JWTKEY=$$(openssl rand -hex 32) && sed -i "s/JWTKEY/$$JWTKEY/g" .env
-	PASSWORD=$$(openssl rand -hex 10) && sed -i "s/mongopwd/$$PASSWORD/g" .env
+	PWD=$$(openssl rand -hex 10) && sed -i "s/nmgpwd/$$PWD/g" .env
 
 # Подготовка ENV-файла
 prepare-macos:
 	cp example.env .env
 	JWTKEY=$$(openssl rand -hex 32) && sed -i '' "s/JWTKEY/$$JWTKEY/g" .env
-	PASSWORD=$$(openssl rand -hex 10) && sed -i '' "s/mongopwd/$$PASSWORD/g" .env
+	PWD=$$(openssl rand -hex 10) && sed -i '' "s/nmgpwd/$$PWD/g" .env
 
 # запуск на проде
 prod:
@@ -16,10 +16,8 @@ prod:
 	export GID=$(id -g)
 	docker compose -f docker-compose.yml up -d
 
-# запуск разработки
+# запуск разработки под macOS
 dev:
-	export UID=$(id -u)
-	export GID=$(id -g)
 	docker compose -f docker-compose.dev.yml up -d
 
 # Остановка
