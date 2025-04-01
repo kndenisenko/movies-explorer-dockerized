@@ -1,9 +1,6 @@
 name: Deploy Dev Branch
 
 on:
-  push:
-    branches:
-      - dev
   workflow_run:
     workflows: ["Docker Compose Test"]
     types:
