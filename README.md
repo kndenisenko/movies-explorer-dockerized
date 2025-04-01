@@ -1,5 +1,7 @@
 # movies-explorer-dockerized
 
+[![Dev Test & Dev Update](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml/badge.svg)](https://github.com/kndenisenko/movies-explorer-dockerized/actions/workflows/dev.yml)
+
 ## Что было вначале
 В этом проекте объединены [фронтенд](https://github.com/kndenisenko/movies-explorer-frontend) и [бэкенд](https://github.com/kndenisenko/movies-explorer-api) дипломного проекта яндекс-практикума по программе "Веб-разработчик". Ранее требовалось вручную разворачивть фронт и бэк на сервере, запускать и мониторить их через PM2, отдельно ставить и настраивать БД, реверс-проекси и заодно решать вопрос с SSL. И вручную переключатся между средами: прод или дев.
 
@@ -14,7 +16,9 @@
 - добавлен сервис [Dozzle](https://github.com/amir20/dozzle) для мониторинга контейнеров, который запускается по адресу `stat-dev.probaland.ru` в среде разработки и по адресу `stat.probaland.ru` на проде. Логин и пароль для доступа: `admin` `admin`
 
 ### Github Actions
-В проект добавлены Github Actions для проверки и автоматизации запуска проекта. В Github Actions настроена проверка контейнеров через docker/setup-buildx-action@v2. При успешной сборке происходит git pull и перезапуск проекта через appleboy/ssh-action@v1. Github Actions срабатывает при пуши или мердже в нужную ветку.
+В проект добавлены Github Actions для проверки и автоматизации запуска проекта. В Github Actions настроены 2 работы. Github Actions срабатывает при пуши или мердже в нужную ветку.
+1. docker/setup-buildx-action@v2 - тестовая сборка и проверка работоспособности проекта запросами в основные контейнеры.
+2. appleboy/ssh-action@v1 - при успешной проверке происходит git pull и перезапуск проекта на сервере.  
 
 ### Общие требования для запуска:
 - macOS, Linux, или Windows с WSL. Рекомендуются дистрибутивы Debian или Ubuntu
