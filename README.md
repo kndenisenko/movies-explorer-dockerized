@@ -12,7 +12,7 @@
 - На бэкенде `bycrypt` заменён на `bycriptjs` для корректной работы проекта на Linux и macOS
 - добавлен сервис [Dozzle](https://github.com/amir20/dozzle) для мониторинга контейнеров, который запускается по адресу `stat-dev.probaland.ru` в среде разработки и по адресу `stat.probaland.ru` на проде. Логин и пароль для доступа: `admin` `admin`
 
- 
+  
 Общие требования для запуска:
 - macOS, Linux, или Windows с WSL. Рекомендуются дистрибутивы Debian или Ubuntu
 - Docker и Docker Compose
