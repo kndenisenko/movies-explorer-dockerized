@@ -63,4 +63,12 @@ jobs:
       - name: Остановка контейнеров
         run: docker compose -f docker-compose.dev.yml down
         if: always()  # Выполнять всегда, даже если предыдущие шаги завершились с ошибкой
-      
+
+
+  dev-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Просто тест второго джоба
+        run: |
+          echo "hello world"
