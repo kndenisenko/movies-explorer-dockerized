@@ -2,10 +2,6 @@ services:
 
   mongo:
     image: mongo
-    ## Раньше использовалось для решения проблемы с правами mongodata
-    ## Из-за особенностей работы докера ей приславивался владелец с UID 999
-    ## На сервере, где тестировалось и запускалось приложения это был UID Caddy 
-    # user: "${UID}:${GID}"
     restart: always
     expose:
       - 27017
@@ -82,7 +78,7 @@ services:
     depends_on:
       - mongo
 
-# Мониторинг контейнеров
+# Simple Monitoring
   dozzle:
     image: amir20/dozzle:latest
     volumes:
@@ -90,7 +86,7 @@ services:
       - ./DozzleUsers.yml:/data/users.yml
     expose:
       - 3001
-    # Убираем прямое проксирование порта, так как будем использовать Caddy
+    # Disable access from localhost. Use Caddy instead
     # ports:
     #   - 3001:3001
     environment:
